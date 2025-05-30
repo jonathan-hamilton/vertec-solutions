@@ -38,7 +38,8 @@ export default function Layout() {
         sx={{ mt: 8, py: 4, textAlign: "center", color: "gray" }}
       >
         <Typography variant="body2">
-          © {new Date().getFullYear()} Vertec Solutions. All rights reserved.
+          © {new Date().getFullYear()} Vertec Solutions LLC. All rights
+          reserved.
         </Typography>
       </Box>
     </Box>
