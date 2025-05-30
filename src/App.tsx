@@ -1,5 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { AppBar, Toolbar, Typography, Button, Container } from "@mui/material";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Profile from "./pages/Profile";
 import Work from "./pages/Work";
 import Contact from "./pages/Contact";
