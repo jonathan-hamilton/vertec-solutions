@@ -1,14 +1,21 @@
-import { Container, Typography } from "@mui/material";
+import HeroSection from "../components/HeroSection";
+import ServiceSpectrum from "../components/ServiceSpectrum";
+import PrinciplesSection from "../components/PrinciplesSection";
+import TestimonialsSection from "../components/TestimonialsSection";
+import CTASection from "../components/CTASection";
 
 export default function Profile() {
   return (
-    <Container>
-      <Typography variant="h3" gutterBottom>
-        Profile Page
-      </Typography>
-      <Typography>
-        Welcome to my portfolio! This is where I’ll introduce myself.
-      </Typography>
-    </Container>
+    <>
+      <HeroSection />
+
+      <ServiceSpectrum />
+
+      <PrinciplesSection />
+
+      <TestimonialsSection />
+
+      <CTASection />
+    </>
   );
 }
