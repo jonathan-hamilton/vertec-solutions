@@ -5,7 +5,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 
 const FooterSection = () => {
   return (
-    <Box sx={{ bgcolor: "grey.100", py: 6 }}>
+    <Box sx={{ bgcolor: "grey.100", py: 6, position: "relative", zIndex: 10 }}>
       <Container>
         <Typography variant="h6" gutterBottom>
           Vertec Solutions

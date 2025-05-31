@@ -1,5 +1,6 @@
 import { Box, Paper, Typography } from "@mui/material";
 import { Build, Language, Code } from "@mui/icons-material";
+import { motion } from "framer-motion";
 
 const services = [
   {
@@ -24,42 +25,50 @@ const services = [
 
 export default function ServiceSpectrum() {
   return (
-    <Box sx={{ textAlign: "center", py: 8 }}>
-      <Typography variant="h4" gutterBottom>
-        Service Spectrum
-      </Typography>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          flexWrap: "wrap",
-          gap: 4,
-          mt: 4,
-        }}
-      >
-        {services.map((service, index) => (
-          <Paper
-            key={index}
-            elevation={3}
-            sx={{
-              p: 4,
-              maxWidth: 300,
-              minHeight: 250,
-              flex: "1 1 250px",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              textAlign: "center",
-            }}
-          >
-            <Box mb={2}>{service.icon}</Box>
-            <Typography variant="h6" gutterBottom>
-              {service.title}
-            </Typography>
-            <Typography variant="body2">{service.description}</Typography>
-          </Paper>
-        ))}
+    <motion.div
+      style={{ position: "relative", zIndex: 2 }}
+      initial={{ opacity: 0, y: 80 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true, amount: 0.3 }}
+    >
+      <Box sx={{ textAlign: "center", py: 8 }}>
+        <Typography variant="h4" gutterBottom>
+          Service Spectrum
+        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            flexWrap: "wrap",
+            gap: 4,
+            mt: 4,
+          }}
+        >
+          {services.map((service, index) => (
+            <Paper
+              key={index}
+              elevation={3}
+              sx={{
+                p: 4,
+                maxWidth: 300,
+                minHeight: 250,
+                flex: "1 1 250px",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                textAlign: "center",
+              }}
+            >
+              <Box mb={2}>{service.icon}</Box>
+              <Typography variant="h6" gutterBottom>
+                {service.title}
+              </Typography>
+              <Typography variant="body2">{service.description}</Typography>
+            </Paper>
+          ))}
+        </Box>
       </Box>
-    </Box>
+    </motion.div>
   );
 }
