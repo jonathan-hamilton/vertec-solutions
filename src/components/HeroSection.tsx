@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 const HeroSection = () => {
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 600, 1000], [1, 1, 0]);
+  const scale = useTransform(scrollY, [0, 1000], [1, 0.8]);
 
   return (
     <Box sx={{ position: "sticky", top: 0, zIndex: 1 }}>
@@ -30,55 +31,61 @@ const HeroSection = () => {
         </Container>
       </motion.div>
 
-      <motion.div style={{ opacity }}>
-        <Box
-          sx={{
-            height: "60vh",
-            backgroundImage: `url(${bridgeImage})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            position: "relative",
-            color: "white",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            "&::before": {
-              content: '""',
-              position: "absolute",
-              inset: 0,
-              backgroundColor: "rgba(0, 0, 0, 0.4)",
-              zIndex: 0,
-            },
-          }}
-        >
-          <Container
-            maxWidth="md"
+      <motion.div style={{ opacity, scale }}>
+        <Container maxWidth="xl" sx={{ px: 0 }}>
+          <Box
             sx={{
+              minHeight: "70vh",
+              height: "60vh",
+              backgroundImage: `url(${bridgeImage})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
               position: "relative",
-              zIndex: 1,
-              textAlign: "center",
+              color: "white",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: 4,
+              mb: 20,
+              overflow: "hidden",
+              "&::before": {
+                content: '""',
+                position: "absolute",
+                inset: 0,
+                backgroundColor: "rgba(0, 0, 0, 0.4)",
+                zIndex: 0,
+              },
             }}
           >
-            <Typography variant="h2" fontWeight={700} gutterBottom>
-              Better design, better experiences.
-            </Typography>
-            <Typography variant="h6" paragraph>
-              As website and web application developers, we understand the
-              perfect user interface should look good and work even better.
-              Alongside our clients, we uncover problems and solve them. In
-              short, we create better online experiences.
-            </Typography>
-            <Button
-              href="/contact"
-              variant="contained"
-              color="primary"
-              size="large"
-              sx={{ mt: 3 }}
+            <Box
+              sx={{
+                position: "relative",
+                zIndex: 1,
+                textAlign: "center",
+                px: 2,
+              }}
             >
-              Contact
-            </Button>
-          </Container>
-        </Box>
+              <Typography variant="h2" fontWeight={700} gutterBottom>
+                Better design, better experiences.
+              </Typography>
+              <Typography variant="h6" paragraph>
+                As website and web application developers, we understand the
+                perfect user interface should look good and work even better.
+                Alongside our clients, we uncover problems and solve them. In
+                short, we create better online experiences.
+              </Typography>
+              <Button
+                href="/contact"
+                variant="contained"
+                color="primary"
+                size="large"
+                sx={{ mt: 3 }}
+              >
+                Contact
+              </Button>
+            </Box>
+          </Box>
+        </Container>
       </motion.div>
     </Box>
   );
