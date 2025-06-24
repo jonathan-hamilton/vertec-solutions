@@ -8,7 +8,7 @@ const HeroSection = () => {
   const scale = useTransform(scrollY, [0, 1000], [1, 0.8]);
 
   return (
-    <Box sx={{ position: "sticky", top: 0, zIndex: 1 }}>
+    <Box sx={{ position: "sticky", top: 0, zIndex: -1 }}>
       <motion.div style={{ opacity }}>
         <Container
           sx={{

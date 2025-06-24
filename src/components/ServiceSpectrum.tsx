@@ -1,96 +1,109 @@
-import { Box, Typography, Paper, Container } from "@mui/material";
-import { motion } from "framer-motion";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Box,
+  Typography,
+} from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { panels } from "../styles/constants";
+import { useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion, useScroll, useTransform } from "framer-motion";
 
-const panels = [
-  {
-    title: "Web Apps & Web Sites",
-    description:
-      "This is where problem solving meets visual impact. Products and users, design and experiences unite.",
-    color: "#e0f7fa",
-  },
-  {
-    title: "WordPress Development",
-    description:
-      "Using WordPress and an expert vision, we will take your application to the next level.",
-    color: "#fce4ec",
-  },
-  {
-    title: "Front & Backend Development",
-    description:
-      "We will help in all aspects of Webapp Development to bridge the gap between design and reality.",
-    color: "#e8f5e9",
-  },
-];
+gsap.registerPlugin(ScrollTrigger);
 
 export default function ServiceSpectrum() {
-  return (
-    <Container maxWidth="xl">
-      <Box
-        sx={{
-          position: "relative",
-          backgroundColor: "black",
-          borderRadius: 4,
-          overflow: "hidden",
-          pb: 10,
-          mx: "auto",
-          zIndex: 1,
-        }}
-      >
-        {/* Sticky Title */}
-        <Box
-          sx={{
-            position: "sticky",
-            top: 0,
-            textAlign: "center",
-            py: 4,
-            backgroundColor: "black",
-            zIndex: 10,
-          }}
-        >
-          <Typography variant="h3" fontWeight="bold">
-            Service Spectrum
-          </Typography>
-        </Box>
+  const [expanded, setExpanded] = useState<number | false>(false);
+  const containerRef = useRef(null);
 
-        {/* Vertical Stacked Panels with Animations */}
+  const { scrollY } = useScroll();
+  const spectrumOpacity = useTransform(scrollY, [600, 1000], [0, 1]);
+
+  const handleChange =
+    (panelIndex: number) =>
+    (_event: React.SyntheticEvent, isExpanded: boolean) => {
+      setExpanded(isExpanded ? panelIndex : false);
+    };
+
+  return (
+    <Box
+      ref={containerRef}
+      sx={{
+        backgroundColor: "black",
+        color: "white",
+        py: 10,
+        px: { xs: 4, md: 2 },
+      }}
+    >
+      <motion.div style={{ opacity: spectrumOpacity }}>
         <Box
           sx={{
             display: "flex",
-            flexDirection: "column",
-            gap: 8,
-            px: 2,
-            mt: 4,
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+            flexWrap: "wrap",
+            px: 8,
+            pb: 6,
           }}
         >
-          {panels.map((panel, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              viewport={{ once: true, amount: 0.4 }}
+          {/* Left: Title */}
+          <Box>
+            <Typography
+              variant="h2"
+              sx={{ fontWeight: "bold", color: "white" }}
             >
-              <Paper
-                elevation={3}
-                sx={{
-                  backgroundColor: panel.color,
-                  p: 4,
-                  minHeight: "200px",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  textAlign: "center",
-                }}
-              >
-                <Typography variant="h5" fontWeight="bold" gutterBottom>
-                  {panel.title}
-                </Typography>
-                <Typography variant="body1">{panel.description}</Typography>
-              </Paper>
-            </motion.div>
-          ))}
+              Service Spectrum
+            </Typography>
+          </Box>
+
+          {/* Right: Description */}
+          <Box
+            sx={{
+              maxWidth: 500,
+              textAlign: "left",
+              color: "grey.500",
+              mt: { xs: 13, md: 7 },
+            }}
+          >
+            <Typography>
+              Enterprise technology skills for your small or medium sized
+              business. We specialize in building/supporting websites and web
+              applications, API integrations, and custom software.
+            </Typography>
+          </Box>
         </Box>
+      </motion.div>
+
+      {/* Accordion Panels */}
+      <Box sx={{ maxWidth: 800, mx: "auto", mt: 4 }}>
+        {panels.map((panel, index) => (
+          <Accordion
+            key={index}
+            expanded={expanded === index}
+            onChange={handleChange(index)}
+            sx={{
+              backgroundColor: "#111",
+              color: "white",
+              border: "1px solid grey",
+              mb: 2,
+              "&:before": { display: "none" },
+            }}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon sx={{ color: "white" }} />}
+            >
+              <Typography variant="h6">{panel.title}</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography color="grey.300" sx={{ whiteSpace: "pre-line" }}>
+                {panel.description}
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
+        ))}
       </Box>
-    </Container>
+    </Box>
   );
 }

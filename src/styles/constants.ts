@@ -38,3 +38,18 @@ export const principles = [
   },
 ];
 
+export const panels = [
+  {
+    title: "Web Sites",
+    description: `A website is the digital front door to your business—often the first impression potential customers have of who you are and what you offer.\n\nIn today’s market, having a modern, professional site is essential for credibility, visibility, and growth. It’s not just about looking good; it’s about being findable, functional, and aligned with your brand’s identity.\n\nAt Vertec Solutions, we craft websites that not only look sharp but are built with performance, mobile responsiveness, and user experience in mind. Whether you're starting fresh or rebranding, we'll deliver a web presence that reflects the professionalism of your business and supports your goals.`,
+  },
+  {
+    title: "Web Applications",
+    description: `Web applications are dynamic, interactive tools that power the core of modern digital businesses. Unlike traditional websites, they allow users to perform tasks, access data, and engage in meaningful ways—all through the browser.\n\nWhether it's a booking system, customer portal, internal dashboard, or full-scale SaaS platform, a web application streamlines operations and enhances user experience. It’s where functionality meets design, enabling efficiency, scalability, and performance.\n\nAt Vertec Solutions, we specialize in building custom web applications tailored to your business goals. With a focus on usability, security, and seamless integration, we help turn your ideas into powerful digital tools that solve real-world problems.`,
+  },
+  {
+    title: "API Integrations",
+    description: `In today's connected world, your business systems need to talk to each other. API integrations are the backbone of that communication—enabling your website, applications, and third-party services to seamlessly share data and functionality.\n\nWhether you're syncing with a CRM, automating workflows, connecting to payment processors, or pulling in external data, APIs eliminate silos and reduce manual work. They improve efficiency, accuracy, and the customer experience.\n\nAt Vertec Solutions, we design and implement robust API integrations that fit your ecosystem and scale with your needs. From off-the-shelf platforms to custom endpoints, we ensure your tools work together smoothly—so you can focus on what matters most: growing your business.`,
+  },
+];
+
