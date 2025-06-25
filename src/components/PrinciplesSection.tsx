@@ -1,22 +1,88 @@
-import { Box, Container, Typography } from "@mui/material";
-import PrincipleCard from "./PrincipleCard";
+import { Box, Typography } from "@mui/material";
 import { principles } from "../styles/constants";
+import React from "react";
+import PrincipleTooltip from "./PrincipleTooltip";
 
 export default function PrinciplesSection() {
+  const radius = 200;
+  const centerSize = 150;
+
   return (
-    <Container sx={{ py: 10 }}>
-      <Typography variant="h4" gutterBottom>
-        Principles
-      </Typography>
-      <Box display="flex" flexWrap="wrap" gap={4} mt={4}>
-        {principles.map((item, index) => (
-          <PrincipleCard
-            key={index}
-            title={item.title}
-            description={item.description}
-          />
-        ))}
+    <Box
+      sx={{
+        position: "relative",
+        width: 500,
+        height: 500,
+        mx: "auto",
+        my: 10,
+      }}
+    >
+      {/* Central Title */}
+      <Box
+        sx={{
+          width: centerSize,
+          height: centerSize,
+          borderRadius: "50%",
+          background: "#eee",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 2,
+          textAlign: "center",
+          p: 4,
+        }}
+      >
+        <Typography variant="h5" fontWeight="bold">
+          Principles
+        </Typography>
       </Box>
-    </Container>
+
+      {/* Circular Items with Icons */}
+      {principles.map((p, i) => {
+        const angle = (360 / principles.length) * i;
+        const rad = (angle * Math.PI) / 180;
+        const x = radius * Math.cos(rad);
+        const y = radius * Math.sin(rad);
+
+        return (
+          <PrincipleTooltip
+            key={i}
+            title={p.title}
+            description={p.description}
+            placement="top"
+          >
+            <Box
+              sx={{
+                position: "absolute",
+                top: `calc(50% + ${y}px)`,
+                left: `calc(50% + ${x}px)`,
+                transform: "translate(-50%, -50%)",
+                background: "black",
+                color: "#fff",
+                borderRadius: "50%",
+                width: "clamp(60px, 12vw, 90px)",
+                height: "clamp(60px, 12vw, 90px)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "clamp(24px, 3vw, 40px)",
+                cursor: "pointer",
+                zIndex: 1,
+                transition: "transform 0.3s ease",
+                "&:hover": {
+                  transform: "translate(-50%, -50%) scale(1.1)",
+                },
+              }}
+            >
+              {React.cloneElement(p.icon, { fontSize: "inherit" })}
+            </Box>
+          </PrincipleTooltip>
+        );
+      })}
+    </Box>
   );
 }

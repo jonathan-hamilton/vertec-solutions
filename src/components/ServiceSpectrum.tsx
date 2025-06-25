@@ -19,7 +19,7 @@ export default function ServiceSpectrum() {
   const containerRef = useRef(null);
 
   const { scrollY } = useScroll();
-  const spectrumOpacity = useTransform(scrollY, [600, 1000], [0, 1]);
+  const spectrumOpacity = useTransform(scrollY, [600, 1000, 1800], [0, 1, 0]);
 
   const handleChange =
     (panelIndex: number) =>
@@ -28,16 +28,16 @@ export default function ServiceSpectrum() {
     };
 
   return (
-    <Box
-      ref={containerRef}
-      sx={{
-        backgroundColor: "black",
-        color: "white",
-        py: 10,
-        px: { xs: 4, md: 2 },
-      }}
-    >
-      <motion.div style={{ opacity: spectrumOpacity }}>
+    <motion.div style={{ opacity: spectrumOpacity }}>
+      <Box
+        ref={containerRef}
+        sx={{
+          backgroundColor: "black",
+          color: "white",
+          py: 10,
+          px: { xs: 4, md: 2 },
+        }}
+      >
         <Box
           sx={{
             display: "flex",
@@ -74,36 +74,36 @@ export default function ServiceSpectrum() {
             </Typography>
           </Box>
         </Box>
-      </motion.div>
 
-      {/* Accordion Panels */}
-      <Box sx={{ maxWidth: 800, mx: "auto", mt: 4 }}>
-        {panels.map((panel, index) => (
-          <Accordion
-            key={index}
-            expanded={expanded === index}
-            onChange={handleChange(index)}
-            sx={{
-              backgroundColor: "#111",
-              color: "white",
-              border: "1px solid grey",
-              mb: 2,
-              "&:before": { display: "none" },
-            }}
-          >
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon sx={{ color: "white" }} />}
+        {/* Accordion Panels */}
+        <Box sx={{ maxWidth: 800, mx: "auto", mt: 4 }}>
+          {panels.map((panel, index) => (
+            <Accordion
+              key={index}
+              expanded={expanded === index}
+              onChange={handleChange(index)}
+              sx={{
+                backgroundColor: "#111",
+                color: "white",
+                border: "1px solid grey",
+                mb: 2,
+                "&:before": { display: "none" },
+              }}
             >
-              <Typography variant="h6">{panel.title}</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography color="grey.300" sx={{ whiteSpace: "pre-line" }}>
-                {panel.description}
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-        ))}
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon sx={{ color: "white" }} />}
+              >
+                <Typography variant="h6">{panel.title}</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography color="grey.300" sx={{ whiteSpace: "pre-line" }}>
+                  {panel.description}
+                </Typography>
+              </AccordionDetails>
+            </Accordion>
+          ))}
+        </Box>
       </Box>
-    </Box>
+    </motion.div>
   );
 }

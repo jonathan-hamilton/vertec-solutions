@@ -1,3 +1,11 @@
+import {
+  Extension,
+  TrackChanges,
+  LayersClear,
+  AccessTime,
+  Handshake,
+} from "@mui/icons-material";
+
 export const DRAWER_WIDTH = 240;
 
 export const BREAKPOINTS = {
@@ -15,26 +23,31 @@ export const principles = [
     title: "UX is the sum of all things.",
     description:
       "We combine aesthetics and functionality to create designs that not only look great but also work flawlessly.",
+    icon: <Extension fontSize="large" />,
   },
   {
     title: "Clients. Curated.",
     description:
       "We take on a limited number of projects so we can give each our full attention and effort.",
+    icon: <TrackChanges fontSize="large" />,
   },
   {
     title: "Clean — In thinking, in style.",
     description:
       "We prioritize clean code, minimalist interfaces, and skilled execution—design as it ought to be.",
+    icon: <LayersClear fontSize="large" />,
   },
   {
     title: "Perfection doesn’t do a 9–5.",
     description:
       "We go the extra mile regardless of time zones or desks—we’re committed to getting it right.",
+    icon: <AccessTime fontSize="large" />,
   },
   {
     title: "Creator. Partner. Collaborator.",
     description:
-      "We're not just developers—we enhance and refine ideas at any stage of your product journey.",
+      "We’re not just developers—we enhance and refine ideas at any stage of your product journey.",
+    icon: <Handshake fontSize="large" />,
   },
 ];
 
@@ -52,4 +65,3 @@ export const panels = [
     description: `In today's connected world, your business systems need to talk to each other. API integrations are the backbone of that communication—enabling your website, applications, and third-party services to seamlessly share data and functionality.\n\nWhether you're syncing with a CRM, automating workflows, connecting to payment processors, or pulling in external data, APIs eliminate silos and reduce manual work. They improve efficiency, accuracy, and the customer experience.\n\nAt Vertec Solutions, we design and implement robust API integrations that fit your ecosystem and scale with your needs. From off-the-shelf platforms to custom endpoints, we ensure your tools work together smoothly—so you can focus on what matters most: growing your business.`,
   },
 ];
-
