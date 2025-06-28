@@ -16,6 +16,31 @@ export const BREAKPOINTS = {
   xl: 1536,
 };
 
+import nickelImg from "../assets/images/nickel-and-dime-frontpage.png";
+import villaPlumbingImg from "../assets/images/villa-plumbing-frontpage.png";
+import comingSoon from "../assets/images/coming-soon.jpg";
+
+export const projects = [
+  {
+    title: "Nickel & Dime Records",
+    description: "Marketing webisite for a record label",
+    image: nickelImg,
+    url: "https://nickelanddimerecords.com",
+  },
+  {
+    title: "Villa Plumbing",
+    description: "Lead-gen site with quote form, SEO optimization, and more.",
+    image: villaPlumbingImg,
+    url: "https://villa.plumbing",
+  },
+  {
+    title: "Facility Scheduler",
+    description: "Event scheduling system for hotels resorts and timeshares.",
+    image: comingSoon,
+    url: "",
+  },
+];
+
 export const TRANSITION_DURATION = 300; // ms
 
 export const principles = [
