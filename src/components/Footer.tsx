@@ -1,13 +1,26 @@
-import { Box, Container, Typography, Stack, IconButton } from "@mui/material";
+import {
+  Box,
+  Container,
+  Typography,
+  Stack,
+  IconButton,
+  useTheme,
+} from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 
 const FooterSection = () => {
+  const theme = useTheme();
+
   return (
     <Box sx={{ bgcolor: "grey.100", py: 6, position: "relative", zIndex: 10 }}>
       <Container>
-        <Typography variant="h6" gutterBottom>
+        <Typography
+          sx={{ color: theme.palette.text.secondary }}
+          variant="h6"
+          gutterBottom
+        >
           Vertec Solutions
         </Typography>
 

@@ -1,8 +1,18 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from "@mui/material/styles";
 import overrides from './overrides';
+import './mui-theme-extensions';
 
 const theme = createTheme({
   palette: {
+    mode: 'light',
+    background: {
+      default: '#dcdcdc',
+      paper: 'black',
+    },
+    text: {
+      primary: '#ffffff',
+      secondary: 'black',
+    },
     primary: {
       main: '#1a73e8',
     },
@@ -16,7 +26,10 @@ const theme = createTheme({
       fontWeight: 600,
     },
   },
-  components: overrides
+  components: overrides,
+  custom: {
+    principleCircle: 'green',
+  },
 });
 
 export default theme;

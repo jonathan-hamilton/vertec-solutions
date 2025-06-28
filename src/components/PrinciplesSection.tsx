@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import { principles } from "../styles/constants";
 import React, { useRef } from "react";
 import PrincipleTooltip from "./PrincipleTooltip";
@@ -17,6 +17,7 @@ export default function PrinciplesSection() {
   );
   const radius = 200;
   const centerSize = 150;
+  const theme = useTheme();
 
   return (
     <motion.div ref={sectionRef} style={{ opacity: principlesOpacity }}>
@@ -35,7 +36,7 @@ export default function PrinciplesSection() {
             width: centerSize,
             height: centerSize,
             borderRadius: "50%",
-            background: "#eee",
+            background: theme.custom.principleCircle,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",

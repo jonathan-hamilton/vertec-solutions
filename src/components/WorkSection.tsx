@@ -1,4 +1,4 @@
-import { Box, Container, Typography, Paper } from "@mui/material";
+import { Box, Container, Typography, Paper, useTheme } from "@mui/material";
 import { projects } from "../styles/constants";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
@@ -11,15 +11,17 @@ export default function WorkSection() {
   });
   const sectionOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
 
+  const theme = useTheme();
+
   return (
     <motion.div ref={sectionRef} style={{ opacity: sectionOpacity }}>
-      <Box sx={{ bgcolor: "black", py: 10 }}>
+      <Box sx={{ bgcolor: theme.palette.background.paper, py: 10 }}>
         <Container maxWidth="lg">
           <Typography
-            variant="h4"
+            variant="h2"
             align="center"
             gutterBottom
-            sx={{ color: "white" }}
+            sx={{ fontWeight: "bold", color: "text.primary" }}
           >
             Selected Works
           </Typography>

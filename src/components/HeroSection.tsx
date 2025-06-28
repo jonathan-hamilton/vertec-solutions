@@ -15,7 +15,7 @@ const HeroSection = () => {
             textAlign: "center",
             pt: 6,
             pb: 2,
-            backgroundColor: "white",
+            backgroundColor: "background.default",
           }}
         >
           <Typography

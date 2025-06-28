@@ -1,4 +1,4 @@
-import { Box, Typography, IconButton, Popover } from "@mui/material";
+import { Box, Typography, IconButton, Popover, useTheme } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CloseIcon from "@mui/icons-material/Close";
 import { panels } from "../styles/constants";
@@ -13,9 +13,9 @@ export default function ServiceSpectrum() {
   const containerRef = useRef(null);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-
   const { scrollY } = useScroll();
   const spectrumOpacity = useTransform(scrollY, [0, 1000, 1800], [0, 1, 0]);
+  const theme = useTheme();
 
   const handleOpen = (event: React.MouseEvent<HTMLElement>, index: number) => {
     setAnchorEl(event.currentTarget);
@@ -32,7 +32,7 @@ export default function ServiceSpectrum() {
       <Box
         ref={containerRef}
         sx={{
-          backgroundColor: "black",
+          backgroundColor: theme.palette.background.paper,
           color: "white",
           py: 10,
           px: { xs: 4, md: 2 },
@@ -52,7 +52,9 @@ export default function ServiceSpectrum() {
           <Box>
             <Typography
               variant="h2"
-              sx={{ fontWeight: "bold", color: "white" }}
+              align="center"
+              gutterBottom
+              sx={{ fontWeight: "bold", color: "text.primary" }}
             >
               Service Spectrum
             </Typography>
