@@ -28,7 +28,7 @@ const testimonials = [
   },
 ];
 
-export default function TestimonialsSection() {
+export default function WorkSection() {
   return (
     <Box sx={{ py: 10, bgcolor: "grey.100" }}>
       <Container maxWidth="md">

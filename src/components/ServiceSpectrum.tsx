@@ -1,11 +1,6 @@
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Box,
-  Typography,
-} from "@mui/material";
+import { Box, Typography, IconButton, Popover } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import CloseIcon from "@mui/icons-material/Close";
 import { panels } from "../styles/constants";
 import { useRef, useState } from "react";
 import gsap from "gsap";
@@ -15,17 +10,22 @@ import { motion, useScroll, useTransform } from "framer-motion";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ServiceSpectrum() {
-  const [expanded, setExpanded] = useState<number | false>(false);
   const containerRef = useRef(null);
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const { scrollY } = useScroll();
-  const spectrumOpacity = useTransform(scrollY, [600, 1000, 1800], [0, 1, 0]);
+  const spectrumOpacity = useTransform(scrollY, [0, 1000, 1800], [0, 1, 0]);
 
-  const handleChange =
-    (panelIndex: number) =>
-    (_event: React.SyntheticEvent, isExpanded: boolean) => {
-      setExpanded(isExpanded ? panelIndex : false);
-    };
+  const handleOpen = (event: React.MouseEvent<HTMLElement>, index: number) => {
+    setAnchorEl(event.currentTarget);
+    setSelectedIndex(index);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+    setSelectedIndex(null);
+  };
 
   return (
     <motion.div style={{ opacity: spectrumOpacity }}>
@@ -38,6 +38,7 @@ export default function ServiceSpectrum() {
           px: { xs: 4, md: 2 },
         }}
       >
+        {/* Header Section */}
         <Box
           sx={{
             display: "flex",
@@ -48,7 +49,6 @@ export default function ServiceSpectrum() {
             pb: 6,
           }}
         >
-          {/* Left: Title */}
           <Box>
             <Typography
               variant="h2"
@@ -58,7 +58,6 @@ export default function ServiceSpectrum() {
             </Typography>
           </Box>
 
-          {/* Right: Description */}
           <Box
             sx={{
               maxWidth: 500,
@@ -75,34 +74,101 @@ export default function ServiceSpectrum() {
           </Box>
         </Box>
 
-        {/* Accordion Panels */}
+        {/* Pop-out Panels */}
         <Box sx={{ maxWidth: 800, mx: "auto", mt: 4 }}>
           {panels.map((panel, index) => (
-            <Accordion
+            <Box
               key={index}
-              expanded={expanded === index}
-              onChange={handleChange(index)}
               sx={{
                 backgroundColor: "#111",
-                color: "white",
                 border: "1px solid grey",
                 mb: 2,
-                "&:before": { display: "none" },
+                px: 3,
+                py: 2,
+                borderRadius: 1,
+                position: "relative",
+                cursor: "pointer",
               }}
+              onClick={(e) => handleOpen(e, index)}
             >
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon sx={{ color: "white" }} />}
+              <Box
+                display="flex"
+                justifyContent="space-between"
+                alignItems="center"
               >
                 <Typography variant="h6">{panel.title}</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography color="grey.300" sx={{ whiteSpace: "pre-line" }}>
-                  {panel.description}
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
+                <ExpandMoreIcon sx={{ color: "white" }} />
+              </Box>
+            </Box>
           ))}
         </Box>
+
+        {/* Pop-out Description */}
+        <Popover
+          open={!!anchorEl}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: "center",
+            horizontal: "center",
+          }}
+          transformOrigin={{
+            vertical: "center",
+            horizontal: "center",
+          }}
+          slotProps={{
+            paper: {
+              sx: {
+                backgroundColor: "#5c5c5c",
+                border: "1px solid #444",
+                color: "#fff",
+                px: 2,
+                py: 1.5,
+                borderRadius: 2,
+                maxWidth: 700,
+                boxShadow: 3,
+              },
+            },
+          }}
+        >
+          {selectedIndex !== null && (
+            <Box
+              sx={{
+                backgroundColor: "#1c1c1c", // Inner tooltip color
+                border: "1px solid #444", // Grey border effect
+                borderRadius: "8px",
+                p: 3,
+              }}
+            >
+              <Box
+                display="flex"
+                justifyContent="space-between"
+                alignItems="center"
+              >
+                <Typography fontWeight="bold">
+                  {panels[selectedIndex].title}
+                </Typography>
+                <IconButton
+                  onClick={handleClose}
+                  sx={{ color: "white", ml: 2 }}
+                  size="small"
+                >
+                  <CloseIcon />
+                </IconButton>
+              </Box>
+              <Typography
+                sx={{
+                  color: "grey.300",
+                  whiteSpace: "pre-line",
+                  mt: 2,
+                  fontSize: "0.875rem",
+                }}
+              >
+                {panels[selectedIndex].description}
+              </Typography>
+            </Box>
+          )}
+        </Popover>
       </Box>
     </motion.div>
   );
