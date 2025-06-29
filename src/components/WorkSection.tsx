@@ -4,17 +4,16 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 export default function WorkSection() {
-  const sectionRef = useRef(null);
+  const ref = useRef(null);
   const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
+    target: ref,
+    offset: ["start end", "start start", "end start"],
   });
   const sectionOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
-
   const theme = useTheme();
 
   return (
-    <motion.div ref={sectionRef} style={{ opacity: sectionOpacity }}>
+    <motion.div ref={ref} style={{ opacity: sectionOpacity }}>
       <Box sx={{ bgcolor: theme.palette.background.paper, py: 10 }}>
         <Container maxWidth="lg">
           <Typography

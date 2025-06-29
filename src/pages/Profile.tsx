@@ -3,7 +3,6 @@ import ServiceSpectrum from "../components/ServiceSpectrum";
 import PrinciplesSection from "../components/PrinciplesSection";
 import WorkSection from "../components/WorkSection";
 import CTASection from "../components/CTASection";
-
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 

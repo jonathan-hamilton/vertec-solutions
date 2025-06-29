@@ -5,9 +5,9 @@ import Header from "./Header";
 
 export default function Layout() {
   return (
-    <Box display="flex" flexDirection="column" minHeight="100vh">
+    <Box>
       <Header />
-      <Box sx={{ mt: 4, flexGrow: 1 }}>
+      <Box sx={{ mt: 4 }}>
         <Outlet />
       </Box>
       <Box component="footer" mt="auto">

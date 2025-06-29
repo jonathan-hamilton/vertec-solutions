@@ -10,11 +10,14 @@ import { motion, useScroll, useTransform } from "framer-motion";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ServiceSpectrum() {
-  const containerRef = useRef(null);
+  const ref = useRef(null);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const { scrollY } = useScroll();
-  const spectrumOpacity = useTransform(scrollY, [0, 1000, 1800], [0, 1, 0]);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "start start", "end start"],
+  });
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
   const theme = useTheme();
 
   const handleOpen = (event: React.MouseEvent<HTMLElement>, index: number) => {
@@ -28,9 +31,9 @@ export default function ServiceSpectrum() {
   };
 
   return (
-    <motion.div style={{ opacity: spectrumOpacity }}>
+    <motion.div ref={ref} style={{ opacity: opacity }}>
       <Box
-        ref={containerRef}
+        ref={ref}
         sx={{
           backgroundColor: theme.palette.background.paper,
           color: "white",

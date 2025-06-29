@@ -5,22 +5,18 @@ import PrincipleTooltip from "./PrincipleTooltip";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function PrinciplesSection() {
-  const sectionRef = useRef(null);
+  const ref = useRef(null);
   const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"], // fade in as section enters, fade out as it leaves
+    target: ref,
+    offset: ["start end", "start start", "end start"],
   });
-  const principlesOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.5, 1],
-    [0, 1, 0]
-  );
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
   const radius = 200;
   const centerSize = 150;
   const theme = useTheme();
 
   return (
-    <motion.div ref={sectionRef} style={{ opacity: principlesOpacity }}>
+    <motion.div ref={ref} style={{ opacity: opacity }}>
       <Box
         sx={{
           position: "relative",
