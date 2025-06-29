@@ -78,7 +78,16 @@ export default function ScrollMenu() {
       <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
         <Box sx={{ width: 250 }} role="presentation">
           <List>
-            <ListItemButton onClick={() => handleNavigate("hero")}>
+            <ListItemButton
+              onClick={() => {
+                setOpen(false);
+                if (location.pathname === "/") {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                } else {
+                  navigate("/");
+                }
+              }}
+            >
               <ListItemText primary="Profile" />
             </ListItemButton>
             <ListItemButton onClick={() => handleNavigate("services")}>

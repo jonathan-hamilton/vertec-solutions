@@ -16,9 +16,71 @@ export const BREAKPOINTS = {
   xl: 1536,
 };
 
+export const appBarSx = {
+  bgcolor: "background.default",
+  color: "text.secondary",
+  zIndex: 10,
+  position: "relative",
+};
+
+export const toolbarSx = {
+  justifyContent: "space-between",
+};
+
+export const brandButtonSx = {
+  textTransform: "none",
+  fontSize: "1.25rem",
+  fontWeight: 500,
+};
+
+export const footerOuterBoxSx = {
+  bgcolor: "grey.100",
+  py: 6,
+  position: "relative",
+  zIndex: 10,
+};
+
+export const footerTitleSx = (theme: any) => ({
+  color: theme.palette.text.secondary,
+});
+
+export const ctaOuterBoxSx = {
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  color: "white",
+  py: { xs: 10, md: 14 },
+  textAlign: "center",
+};
+
+export const ctaInnerBoxSx = {
+  backgroundColor: "rgba(0, 0, 0, 0.5)",
+  py: { xs: 10, md: 14 },
+  px: 2,
+};
+
+export const contactBackgroundBoxSx = {
+  width: "120%",
+  position: "relative",
+  left: "50%",
+  transform: "translateX(-50%)",
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+  borderRadius: 4,
+  p: { xs: 2.4, md: 4.8 },
+};
+
 import nickelImg from "../assets/images/nickel-and-dime-frontpage.png";
 import villaPlumbingImg from "../assets/images/villa-plumbing-frontpage.png";
 import comingSoon from "../assets/images/coming-soon.jpg";
+
+export const HERO_DESCRIPTION = `At Vertec Solutions, we bring enterprise-grade expertise to small and mid-sized businesses ready to level up.
+
+With deep experience in full-stack development, cloud infrastructure, and user-centered design, we build websites, web apps, and managed IT solutions that solve real problems.
+
+We modernize outdated systems, streamline operations, and craft intuitive digital tools that drive growth.
+
+Big-league tech. Small business focus. That's Vertec Solutions.`;
 
 export const projects = [
   {

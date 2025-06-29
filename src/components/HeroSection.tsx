@@ -1,6 +1,8 @@
 import { Box, Container, Typography, Button } from "@mui/material";
+import { Link } from "react-router-dom"; // Add this import
 import bridgeImage from "../assets/images/skyline-stories-hero1.jpg";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { HERO_DESCRIPTION } from "../styles/constants";
 
 const HeroSection = () => {
   const { scrollY } = useScroll();
@@ -46,13 +48,11 @@ const HeroSection = () => {
               Better design, better experiences.
             </Typography>
             <Typography variant="h6" paragraph>
-              As website and web application developers, we understand the
-              perfect user interface should look good and work even better.
-              Alongside our clients, we uncover problems and solve them. In
-              short, we create better online experiences.
+              {HERO_DESCRIPTION}
             </Typography>
             <Button
-              href="/contact"
+              component={Link}
+              to="/contact"
               variant="contained"
               color="primary"
               size="large"

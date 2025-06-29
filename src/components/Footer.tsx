@@ -1,30 +1,17 @@
-import {
-  Box,
-  Container,
-  Typography,
-  Stack,
-  IconButton,
-  useTheme,
-} from "@mui/material";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import InstagramIcon from "@mui/icons-material/Instagram";
+import { Box, Container, Typography, useTheme } from "@mui/material";
+import { footerOuterBoxSx, footerTitleSx } from "../styles/constants";
 
 const FooterSection = () => {
   const theme = useTheme();
 
   return (
-    <Box sx={{ bgcolor: "grey.100", py: 6, position: "relative", zIndex: 10 }}>
+    <Box sx={footerOuterBoxSx}>
       <Container>
-        <Typography
-          sx={{ color: theme.palette.text.secondary }}
-          variant="h6"
-          gutterBottom
-        >
+        <Typography sx={footerTitleSx(theme)} variant="h6" gutterBottom>
           Vertec Solutions
         </Typography>
 
-        <Stack direction="row" spacing={1}>
+        {/* <Stack direction="row" spacing={1}>
           <IconButton
             aria-label="LinkedIn"
             href="https://www.linkedin.com"
@@ -46,7 +33,7 @@ const FooterSection = () => {
           >
             <InstagramIcon />
           </IconButton>
-        </Stack>
+        </Stack> */}
 
         <Typography variant="body2" color="text.secondary" mt={2}>
           Copyright © {new Date().getFullYear()} | VertecSolutions LLC

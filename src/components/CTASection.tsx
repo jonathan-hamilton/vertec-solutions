@@ -1,6 +1,7 @@
 import { Box, Button, Container, Typography } from "@mui/material";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { Link } from "react-router-dom"; // <-- Add this import
 import bgImage from "../assets/images/skyline-stories-cta.jpg";
 
 const CTASection = () => {
@@ -38,7 +39,13 @@ const CTASection = () => {
               You know about us, let’s talk about you.
             </Typography>
             <Box display="flex" justifyContent="center" gap={2} flexWrap="wrap">
-              <Button variant="contained" size="large" color="primary">
+              <Button
+                variant="contained"
+                size="large"
+                color="primary"
+                component={Link}
+                to="/contact"
+              >
                 Shoot us a message
               </Button>
             </Box>

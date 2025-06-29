@@ -1,5 +1,6 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
+import { AppBar, Toolbar, Button, Box } from "@mui/material";
+import { appBarSx, toolbarSx, brandButtonSx } from "../styles/constants";
 
 export default function HeaderSection() {
   const navigate = useNavigate();
@@ -21,22 +22,17 @@ export default function HeaderSection() {
   };
 
   return (
-    <AppBar
-      position="static"
-      elevation={0}
-      sx={{
-        bgcolor: "background.default",
-        color: "text.secondary",
-        zIndex: 10,
-        position: "relative",
-      }}
-    >
-      <Toolbar sx={{ justifyContent: "space-between" }}>
-        <Typography variant="h6">
+    <AppBar position="static" elevation={0} sx={appBarSx}>
+      <Toolbar sx={toolbarSx}>
+        <Button
+          color="inherit"
+          onClick={() => navigate("/")}
+          sx={brandButtonSx}
+        >
           Full Stack Web Development and Design
-        </Typography>
+        </Button>
         <Box>
-          <Button onClick={() => handleNavigate("hero")} color="inherit">
+          <Button onClick={() => navigate("/")} color="inherit">
             Profile
           </Button>
           <Button onClick={() => handleNavigate("services")} color="inherit">
