@@ -1,4 +1,10 @@
-import { Box, Tooltip, Typography, TooltipProps } from "@mui/material";
+import {
+  Box,
+  Tooltip,
+  Typography,
+  TooltipProps,
+  useTheme,
+} from "@mui/material";
 import { ReactElement } from "react";
 import Grow from "@mui/material/Grow";
 
@@ -14,6 +20,8 @@ export default function PrincipleTooltip({
   children,
   ...rest
 }: PrincipleTooltipProps) {
+  const theme = useTheme();
+
   return (
     <Tooltip
       {...rest}
@@ -23,17 +31,7 @@ export default function PrincipleTooltip({
       arrow
       slotProps={{ transition: { timeout: 300 } }}
       title={
-        <Box
-          sx={{
-            backgroundColor: "rgba(33, 33, 33, 0.9)",
-            color: "#fff",
-            px: 2,
-            py: 1.5,
-            borderRadius: 2,
-            maxWidth: 250,
-            boxShadow: 3,
-          }}
-        >
+        <Box sx={theme.custom.principlesTipBoxBoxSx}>
           <Typography variant="subtitle2" fontWeight="bold" mb={0.5}>
             {title}
           </Typography>

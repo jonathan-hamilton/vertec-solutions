@@ -1,4 +1,3 @@
-// src/components/ScrollMenu.tsx
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
@@ -8,6 +7,7 @@ import {
   List,
   ListItemButton,
   ListItemText,
+  useTheme,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { motion, AnimatePresence } from "framer-motion";
@@ -15,9 +15,9 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function ScrollMenu() {
   const [showMenuIcon, setShowMenuIcon] = useState(false);
   const [open, setOpen] = useState(false);
-
   const navigate = useNavigate();
   const location = useLocation();
+  const theme = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,13 +61,7 @@ export default function ScrollMenu() {
           >
             <IconButton
               onClick={() => setOpen(true)}
-              sx={{
-                width: 54,
-                height: 54,
-                backgroundColor: "white",
-                boxShadow: 3,
-                "&:hover": { backgroundColor: "#f0f0f0" },
-              }}
+              sx={theme.custom.scrollMenuIconSx}
             >
               <MenuIcon />
             </IconButton>

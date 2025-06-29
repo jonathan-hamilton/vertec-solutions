@@ -12,7 +12,6 @@ import {
 } from "@mui/material";
 import { Email } from "@mui/icons-material";
 import contactBg from "../assets/images/react-contact-background.jpg";
-import { contactBackgroundBoxSx } from "../styles/constants";
 
 export default function Contact() {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
@@ -30,9 +29,9 @@ export default function Contact() {
     >
       <Box
         sx={{
-          ...contactBackgroundBoxSx,
+          ...theme.custom.contactBackgroundBoxSx,
           backgroundImage: `url(${contactBg})`,
-          position: "relative", // Needed for overlay positioning
+          position: "relative",
           overflow: "hidden",
         }}
       >
@@ -41,7 +40,7 @@ export default function Contact() {
           sx={{
             position: "absolute",
             inset: 0,
-            backgroundColor: "rgba(0,0,0,0.4)", // Adjust opacity as needed
+            backgroundColor: "rgba(0,0,0,0.4)",
             zIndex: 1,
             borderRadius: 4,
             pointerEvents: "none",

@@ -1,3 +1,4 @@
+// ---- MUI Icons ----
 import {
   Extension,
   TrackChanges,
@@ -6,6 +7,7 @@ import {
   Handshake,
 } from "@mui/icons-material";
 
+// ---- Layout & Breakpoints ----
 export const DRAWER_WIDTH = 240;
 
 export const BREAKPOINTS = {
@@ -16,63 +18,10 @@ export const BREAKPOINTS = {
   xl: 1536,
 };
 
-export const appBarSx = {
-  bgcolor: "background.default",
-  color: "text.secondary",
-  zIndex: 10,
-  position: "relative",
-};
-
-export const toolbarSx = {
-  justifyContent: "space-between",
-};
-
-export const brandButtonSx = {
-  textTransform: "none",
-  fontSize: "1.25rem",
-  fontWeight: 500,
-};
-
-export const footerOuterBoxSx = {
-  bgcolor: "grey.100",
-  py: 6,
-  position: "relative",
-  zIndex: 10,
-};
-
-export const footerTitleSx = (theme: any) => ({
-  color: theme.palette.text.secondary,
-});
-
-export const ctaOuterBoxSx = {
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  color: "white",
-  py: { xs: 10, md: 14 },
-  textAlign: "center",
-};
-
-export const ctaInnerBoxSx = {
-  backgroundColor: "rgba(0, 0, 0, 0.5)",
-  py: { xs: 10, md: 14 },
-  px: 2,
-};
-
-export const contactBackgroundBoxSx = {
-  width: "120%",
-  position: "relative",
-  left: "50%",
-  transform: "translateX(-50%)",
-  backgroundSize: "cover",
-  backgroundPosition: "center",
-  backgroundRepeat: "no-repeat",
-  borderRadius: 4,
-  p: { xs: 2.4, md: 4.8 },
-};
-
-import nickelImg from "../assets/images/nickel-and-dime-frontpage.png";
-import villaPlumbingImg from "../assets/images/villa-plumbing-frontpage.png";
-import comingSoon from "../assets/images/coming-soon.jpg";
+// ---- Hero Section ----
+export const HERO_HEADER_DESCRIPTION = `Enterprise technology skills for your small or medium sized
+business. We specialize in building/supporting websites and web
+applications, API integrations, and custom software.`;
 
 export const HERO_DESCRIPTION = `At Vertec Solutions, we bring enterprise-grade expertise to small and mid-sized businesses ready to level up.
 
@@ -82,6 +31,12 @@ We modernize outdated systems, streamline operations, and craft intuitive digita
 
 Big-league tech. Small business focus. That's Vertec Solutions.`;
 
+// ---- Project Images ----
+import nickelImg from "../assets/images/nickel-and-dime-frontpage.png";
+import villaPlumbingImg from "../assets/images/villa-plumbing-frontpage.png";
+import comingSoon from "../assets/images/coming-soon.jpg";
+
+// ---- Projects List ----
 export const projects = [
   {
     title: "Nickel & Dime Records",
@@ -103,8 +58,10 @@ export const projects = [
   },
 ];
 
+// ---- Animation/Transition ----
 export const TRANSITION_DURATION = 300; // ms
 
+// ---- Principles Section ----
 export const principles = [
   {
     title: "UX is the sum of all things.",
@@ -138,6 +95,7 @@ export const principles = [
   },
 ];
 
+// ---- Service Panels ----
 export const panels = [
   {
     title: "Web Sites",

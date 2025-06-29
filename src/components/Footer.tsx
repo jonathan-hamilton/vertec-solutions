@@ -1,13 +1,17 @@
 import { Box, Container, Typography, useTheme } from "@mui/material";
-import { footerOuterBoxSx, footerTitleSx } from "../styles/constants";
+// import { footerOuterBoxSx, footerTitleSx } from "../styles/constants";
 
 const FooterSection = () => {
   const theme = useTheme();
 
   return (
-    <Box sx={footerOuterBoxSx}>
+    <Box sx={theme.custom.footerOuterBoxSx}>
       <Container>
-        <Typography sx={footerTitleSx(theme)} variant="h6" gutterBottom>
+        <Typography
+          sx={theme.custom.footerTitleSx?.(theme)}
+          variant="h6"
+          gutterBottom
+        >
           Vertec Solutions
         </Typography>
 

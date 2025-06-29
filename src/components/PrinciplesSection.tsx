@@ -22,32 +22,14 @@ export default function PrinciplesSection() {
 
   return (
     <motion.div ref={ref} style={{ opacity, scale }}>
-      <Box
-        sx={{
-          position: "relative",
-          width: 500,
-          height: 500,
-          mx: "auto",
-          my: 10,
-        }}
-      >
+      <Box sx={theme.custom.principlesSectionOuterBoxSx}>
         {/* Central Title */}
         <Box
           sx={{
             width: centerSize,
             height: centerSize,
-            borderRadius: "50%",
+            ...theme.custom.principlesSectionCentralTitleBoxSx,
             background: theme.custom.principleCircle,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            zIndex: 2,
-            textAlign: "center",
-            p: 4,
           }}
         >
           <Typography variant="h5" fontWeight="bold">
@@ -71,25 +53,9 @@ export default function PrinciplesSection() {
             >
               <Box
                 sx={{
-                  position: "absolute",
                   top: `calc(50% + ${y}px)`,
                   left: `calc(50% + ${x}px)`,
-                  transform: "translate(-50%, -50%)",
-                  background: "black",
-                  color: "#fff",
-                  borderRadius: "50%",
-                  width: "clamp(60px, 12vw, 90px)",
-                  height: "clamp(60px, 12vw, 90px)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "clamp(24px, 3vw, 40px)",
-                  cursor: "pointer",
-                  zIndex: 1,
-                  transition: "transform 0.3s ease",
-                  "&:hover": {
-                    transform: "translate(-50%, -50%) scale(1.1)",
-                  },
+                  ...theme.custom.principlesSectionToolTipBoxBoxSx,
                 }}
               >
                 {React.cloneElement(p.icon, { fontSize: "inherit" })}

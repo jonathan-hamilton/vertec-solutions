@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom"; // <-- Add this import
 import bgImage from "../assets/images/skyline-stories-cta.jpg";
+import theme from "../theme";
 
 const CTASection = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -17,20 +18,10 @@ const CTASection = () => {
       <Box
         sx={{
           backgroundImage: `url(${bgImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          color: "white",
-          py: { xs: 10, md: 14 },
-          textAlign: "center",
+          ...theme.custom.ctaOuterBoxSx,
         }}
       >
-        <Box
-          sx={{
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            py: { xs: 10, md: 14 },
-            px: 2,
-          }}
-        >
+        <Box sx={theme.custom.ctaInnerBoxSx}>
           <Container>
             <Typography variant="h4" gutterBottom>
               Ready to get started?

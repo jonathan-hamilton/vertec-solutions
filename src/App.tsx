@@ -5,7 +5,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import { ThemeProvider, CssBaseline } from "@mui/material";
-import theme from "./styles/theme";
+import theme from "./theme";
 import Profile from "./pages/Profile";
 import Contact from "./pages/Contact";
 import Proposal from "./pages/Proposal";

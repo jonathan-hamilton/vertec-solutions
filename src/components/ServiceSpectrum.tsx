@@ -1,7 +1,10 @@
 import { Box, Typography, IconButton, Popover, useTheme } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CloseIcon from "@mui/icons-material/Close";
-import { panels } from "../styles/constants";
+import {
+  HERO_HEADER_DESCRIPTION as SERVICE_SPECTRUM_HEADER_DESCRIPTION,
+  panels,
+} from "../styles/constants";
 import { useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,19 +16,16 @@ export default function ServiceSpectrum() {
   const ref = useRef(null);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "start start", "end start"],
   });
-
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
   const scale = useTransform(
     scrollYProgress,
     [0, 0.3, 0.7, 1],
     [0.8, 1, 1, 0.8]
   );
-
   const theme = useTheme();
 
   const handleOpen = (event: React.MouseEvent<HTMLElement>, index: number) => {
@@ -47,49 +47,22 @@ export default function ServiceSpectrum() {
         transformOrigin: "bottom center",
       }}
     >
-      <Box
-        sx={{
-          backgroundColor: theme.palette.background.paper,
-          color: "white",
-          py: 10,
-          px: { xs: 4, md: 2 },
-        }}
-      >
+      <Box sx={theme.custom.serviceSpectrumOuterBoxSx}>
         {/* Header Section */}
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "flex-start",
-            flexWrap: "wrap",
-            px: 8,
-            pb: 6,
-          }}
-        >
+        <Box sx={theme.custom.serviceSpectrumHeaderBoxSx}>
           <Box>
             <Typography
               variant="h2"
               align="center"
               gutterBottom
-              sx={{ fontWeight: "bold", color: "text.primary" }}
+              sx={theme.custom.serviceSpectrumHeaderTypographyBoxSx}
             >
               Service Spectrum
             </Typography>
           </Box>
 
-          <Box
-            sx={{
-              maxWidth: 500,
-              textAlign: "left",
-              color: "grey.500",
-              mt: { xs: 13, md: 7 },
-            }}
-          >
-            <Typography>
-              Enterprise technology skills for your small or medium sized
-              business. We specialize in building/supporting websites and web
-              applications, API integrations, and custom software.
-            </Typography>
+          <Box sx={theme.custom.serviceSpectrumHeaderDescriptionBoxSx}>
+            <Typography>{SERVICE_SPECTRUM_HEADER_DESCRIPTION}</Typography>
           </Box>
         </Box>
 
@@ -98,16 +71,7 @@ export default function ServiceSpectrum() {
           {panels.map((panel, index) => (
             <Box
               key={index}
-              sx={{
-                backgroundColor: "#111",
-                border: "1px solid grey",
-                mb: 2,
-                px: 3,
-                py: 2,
-                borderRadius: 1,
-                position: "relative",
-                cursor: "pointer",
-              }}
+              sx={theme.custom.serviceSpectrumPopoutPanelBoxSx}
               onClick={(e) => handleOpen(e, index)}
             >
               <Box
@@ -137,28 +101,12 @@ export default function ServiceSpectrum() {
           }}
           slotProps={{
             paper: {
-              sx: {
-                backgroundColor: "#5c5c5c",
-                border: "1px solid #444",
-                color: "#fff",
-                px: 2,
-                py: 1.5,
-                borderRadius: 2,
-                maxWidth: 700,
-                boxShadow: 3,
-              },
+              sx: theme.custom.serviceSpectrumPopoutDescriptionPopoverSx,
             },
           }}
         >
           {selectedIndex !== null && (
-            <Box
-              sx={{
-                backgroundColor: "#1c1c1c",
-                border: "1px solid #444",
-                borderRadius: "8px",
-                p: 3,
-              }}
-            >
+            <Box sx={theme.custom.serviceSpectrumPopoutOuterBoxSx}>
               <Box
                 display="flex"
                 justifyContent="space-between"
@@ -175,14 +123,7 @@ export default function ServiceSpectrum() {
                   <CloseIcon />
                 </IconButton>
               </Box>
-              <Typography
-                sx={{
-                  color: "grey.300",
-                  whiteSpace: "pre-line",
-                  mt: 2,
-                  fontSize: "0.875rem",
-                }}
-              >
+              <Typography sx={theme.custom.serviceSpectrumPopoutTypographySx}>
                 {panels[selectedIndex].description}
               </Typography>
             </Box>

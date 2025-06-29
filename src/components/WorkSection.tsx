@@ -25,32 +25,17 @@ export default function WorkSection() {
             variant="h2"
             align="center"
             gutterBottom
-            sx={{ fontWeight: "bold", color: "text.primary" }}
+            sx={theme.custom.workSectionOuterTypographyOuterBoxSx}
           >
             Selected Works
           </Typography>
 
-          <Box
-            sx={{
-              display: "grid",
-              gap: 4,
-              gridTemplateColumns: {
-                xs: "1fr",
-                sm: "1fr 1fr",
-                md: "1fr 1fr 1fr",
-              },
-              mt: 4,
-            }}
-          >
+          <Box sx={theme.custom.workSectionOuterBoxSx}>
             {projects.map((project, idx) => (
               <Paper
                 key={idx}
                 elevation={3}
-                sx={{
-                  overflow: "hidden",
-                  borderRadius: 2,
-                  bgcolor: "grey.900",
-                }}
+                sx={theme.custom.workSectionPaperSx}
               >
                 <Box
                   component="a"
@@ -58,11 +43,8 @@ export default function WorkSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   sx={{
-                    display: "block",
-                    height: 240,
+                    ...theme.custom.workSectionUrlBoxSx,
                     backgroundImage: `url(${project.image})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "top",
                   }}
                 />
                 <Box sx={{ p: 2 }}>
