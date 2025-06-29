@@ -24,6 +24,7 @@ const theme = createTheme({
     h1: {
       fontSize: '2rem',
       fontWeight: 600,
+      fontFamily: 'Roboto", "Helvetica", "Arial',
     },
   },
   components: overrides,

@@ -23,7 +23,7 @@ import comingSoon from "../assets/images/coming-soon.jpg";
 export const projects = [
   {
     title: "Nickel & Dime Records",
-    description: "Marketing webisite for a record label",
+    description: "Marketing webisite for a record label.",
     image: nickelImg,
     url: "https://nickelanddimerecords.com",
   },
