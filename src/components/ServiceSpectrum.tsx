@@ -13,11 +13,19 @@ export default function ServiceSpectrum() {
   const ref = useRef(null);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "start start", "end start"],
   });
+
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
+  const scale = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.7, 1],
+    [0.8, 1, 1, 0.8]
+  );
+
   const theme = useTheme();
 
   const handleOpen = (event: React.MouseEvent<HTMLElement>, index: number) => {
@@ -31,9 +39,15 @@ export default function ServiceSpectrum() {
   };
 
   return (
-    <motion.div ref={ref} style={{ opacity: opacity }}>
+    <motion.div
+      ref={ref}
+      style={{
+        opacity,
+        scale,
+        transformOrigin: "bottom center",
+      }}
+    >
       <Box
-        ref={ref}
         sx={{
           backgroundColor: theme.palette.background.paper,
           color: "white",
@@ -139,8 +153,8 @@ export default function ServiceSpectrum() {
           {selectedIndex !== null && (
             <Box
               sx={{
-                backgroundColor: "#1c1c1c", // Inner tooltip color
-                border: "1px solid #444", // Grey border effect
+                backgroundColor: "#1c1c1c",
+                border: "1px solid #444",
                 borderRadius: "8px",
                 p: 3,
               }}

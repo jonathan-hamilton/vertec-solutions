@@ -9,11 +9,16 @@ export default function WorkSection() {
     target: ref,
     offset: ["start end", "start start", "end start"],
   });
-  const sectionOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
+  const scale = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.7, 1],
+    [0.8, 1, 1, 0.8]
+  );
   const theme = useTheme();
 
   return (
-    <motion.div ref={ref} style={{ opacity: sectionOpacity }}>
+    <motion.div ref={ref} style={{ opacity, scale }}>
       <Box sx={{ bgcolor: theme.palette.background.paper, py: 10 }}>
         <Container maxWidth="lg">
           <Typography

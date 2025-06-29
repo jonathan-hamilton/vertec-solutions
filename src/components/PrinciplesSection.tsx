@@ -11,12 +11,17 @@ export default function PrinciplesSection() {
     offset: ["start end", "start start", "end start"],
   });
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
+  const scale = useTransform(
+    scrollYProgress,
+    [0, 0.05, 0.6, 1],
+    [0.8, 1, 1, 0.8]
+  );
   const radius = 200;
   const centerSize = 150;
   const theme = useTheme();
 
   return (
-    <motion.div ref={ref} style={{ opacity: opacity }}>
+    <motion.div ref={ref} style={{ opacity, scale }}>
       <Box
         sx={{
           position: "relative",
